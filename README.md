@@ -15,7 +15,7 @@ W kodzie jest niestety bug dla czasu wstecznego, niestety nie udało mi się w t
 
 Program włączamy z poziomu wiersza poleceń (ja pracowałem na fedorze) w następujący sposób:
 
-$ python main.py [domino block input] [steps] [time forward]
+$ python main.py [domino block input] [number of steps] [time forward]
 
 Przykład:
 
