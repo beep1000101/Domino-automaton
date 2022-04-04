@@ -1,8 +1,11 @@
 class DominoAutomaton():
 
-    def __init__(self, domino_input, rule="222211000222211000222100000", steps=1):
+    def __init__(self, domino_input, steps=1, time_forward=True):
+        _time_forward_rule = "222211000222211000222100000"
+        _reversed_time_rule = "222111100122111100111111110"
+        _rule = _time_forward_rule if time_forward else _reversed_time_rule
         self.domino_representation = domino_input
-        self.reversed_rule = rule[::-1]
+        self.reversed_rule = _rule[::-1]
         self.steps = steps
         self.ternary_number_representation = [
             self.__bar_number_map(domino_representation_block)
@@ -13,7 +16,7 @@ class DominoAutomaton():
         state_vector = self.ternary_number_representation
         for _ in range(self.steps):
             state_vector = self.__new_vector(state_vector)
-        return "".join(self.__number_bar_map(str(element)) for element in state_vector)
+        return "".join(self.__number_bar_map(fr"{element}") for element in state_vector)
 
     def __new_vector(self, automaton_vector):
         _right_shifted_vector = [1] + [element for element in automaton_vector[:-1]]
